@@ -39,6 +39,12 @@
   }
 }
 
+.pb-250 {
+  padding-bottom: 250px !important; }
+
+.position-relative {
+  position: relative !important; }
+
 .section-lg {
   padding-top: 6rem;
   padding-bottom: 6rem; }
