@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+<h1>This is a Heading</h1>
+<p>This is a paragraph.</p>
+<script src="./node_modules/socket.io-client/dist/socket.io.js"></script>
+<script>
+  var socket = io("http://localhost:5000/");
+  socket.emit("join","hey")
+  socket.on("kek",(arg)=>{
+      console.log(arg)
+  })
+  
+</script>
+
+</body>
+</html>
+
+
