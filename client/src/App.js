@@ -2,11 +2,24 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+} from "react-router-dom";
+
+import Home from './components/Home.js';
+import JoinRoom from './components/JoinRoom';
+import CreateRoom from './components/CreateRoom';
+import StudentDashboard from './components/StudentDashboard.js';
+import LecturerDashboard from './components/LecturerDashboard';
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    return (
+        <div className="App">
+
+        {/* <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
@@ -17,10 +30,28 @@ function App() {
           rel="noopener noreferrer"
         >
           Learn React
-        </a>
-      </header>
-    </div>
-  );
+        </a> */}
+
+            <Router>
+                <Switch>
+
+                    <Route path="/join">
+                    <JoinRoom />
+                    </Route>
+
+                    <Route path="/create">
+                    <CreateRoom />
+                    </Route>
+                
+                    <Route path="/">
+                    <Home />
+                    </Route>
+
+                </Switch>
+            </Router>
+
+        </div>
+    );
 }
 
 export default App;
