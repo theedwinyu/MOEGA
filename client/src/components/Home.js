@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {Redirect} from "react-router-dom"
-import { Card, Button } from 'antd';
+import { Card, Button, Divider } from 'antd';
+
+const { Meta } = Card;
 
 class Home extends Component{
     constructor(){
@@ -46,7 +48,13 @@ class Home extends Component{
                 </div>
 
             <div className="App-header">
-                <Card title="Making Online Education Great Again" bordered={false} style={{ width: 500 }}>
+                <Card bordered={true} style={{ backgroundColor:'white', borderRadius:'15px'}}>
+                <Meta
+                    title={<h1>Making Online Education Great Again</h1>}
+                    style={{color:'#1A2E33', textAlign:'center'}}
+                />
+
+                <Divider/>
                 <Button onClick={this.joinRoomClick}>Join Room</Button>
                 <br></br>
                 <br></br>

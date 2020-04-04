@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Redirect} from "react-router-dom";
+import {Redirect,withRouter} from "react-router-dom";
 import { Card, Button, Form, Input } from 'antd';
 
 class JoinRoom extends Component{
@@ -89,4 +89,4 @@ class JoinRoom extends Component{
     }
 }
 
-export default JoinRoom;
+export default withRouter(JoinRoom);
