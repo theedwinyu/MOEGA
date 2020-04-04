@@ -14,6 +14,11 @@ import JoinRoom from './components/JoinRoom';
 import StudentDashboard from './components/StudentDashboard';
 import LecturerDashboard from './components/LecturerDashboard';
 
+import { createBrowserHistory as createHistory } from "history";
+import WhiteBoardPage from './components/WhiteBoard';
+
+const history = createHistory();
+
 function App() {
     return (
         <div className="App">
@@ -31,6 +36,10 @@ function App() {
 
                     <Route path="/lecturer">
                     <LecturerDashboard />
+                    </Route>
+
+                    <Route path="/whiteBoard">
+                    <WhiteBoardPage />
                     </Route>
                 
                     <Route path="/">
