@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {withRouter} from "react-router-dom"
 import io from 'socket.io-client'
 import ml5 from 'ml5'
 import {Redirect, withRouter} from "react-router-dom"
