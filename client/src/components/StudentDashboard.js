@@ -4,6 +4,8 @@ import {Card} from 'antd';
 
 import { Comment, Avatar, Form, Button, List, Input } from 'antd';
 
+const { TextArea } = Input;
+
 const CommentList = ({ comments }) => (
     <List
         dataSource={comments}
