@@ -11,26 +11,12 @@ import {
 
 import Home from './components/Home.js';
 import JoinRoom from './components/JoinRoom';
-import CreateRoom from './components/CreateRoom';
-import StudentDashboard from './components/StudentDashboard.js';
+import StudentDashboard from './components/StudentDashboard';
 import LecturerDashboard from './components/LecturerDashboard';
 
 function App() {
     return (
         <div className="App">
-
-        {/* <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a> */}
 
             <Router>
                 <Switch>
@@ -38,9 +24,13 @@ function App() {
                     <Route path="/join">
                     <JoinRoom />
                     </Route>
+                    
+                    <Route path="/student">
+                    <StudentDashboard />
+                    </Route>
 
-                    <Route path="/create">
-                    <CreateRoom />
+                    <Route path="/lecturer">
+                    <LecturerDashboard />
                     </Route>
                 
                     <Route path="/">

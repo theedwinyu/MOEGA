@@ -9,8 +9,6 @@ class Home extends Component{
             joinRedirect: false, 
             createRedirect: false
         };
-        // this.joinRoomClick = this.joinRoomClick(this);
-        // this.createRoomClick = this.createRoomClick(this);
     }
 
     joinRoomClick = () => {
@@ -30,7 +28,7 @@ class Home extends Component{
         }
         
         if(this.state.createRedirect){
-            return <Redirect to={{ pathname: '/create'}} />
+            return <Redirect to={{ pathname: '/lecturer'}} />
         }
 
         return(
