@@ -55,7 +55,7 @@ io.on('connection',(socket)=>{
 
     socket.on("whiteboardUpdate",(roomID,url)=>{
         console.log("whiteboard!")
-        socket.to(roomID).emit("whiteboard",url)
+        io.to(roomID).emit("whiteboard",url)
     })
 
 
