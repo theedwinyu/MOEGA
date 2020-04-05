@@ -6,6 +6,7 @@ import { Stage, Layer } from "react-konva";
 import { addLine } from "./Line";
 
 function WhiteBoardPage() {
+	const [, updateState] = React.useState();
 	const stage = React.createRef();
 	const layer = React.createRef();
 
@@ -15,8 +16,8 @@ function WhiteBoardPage() {
     
 	const eraseLine = () => {
 		addLine(stage.current.getStage(), layer.current, "erase");
-    };
-    
+	};
+
 	return (
 		<div className="home-page">
 			<h1>WhiteBoard</h1>

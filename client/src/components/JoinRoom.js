@@ -2,6 +2,21 @@ import React, { Component } from 'react';
 import {Redirect,withRouter} from "react-router-dom";
 import { Card, Button, Form, Input } from 'antd';
 
+const layout = {
+    labelCol: {
+      span: 4,
+    },
+    wrapperCol: {
+      span: 18,
+    },
+  };
+  const tailLayout = {
+    wrapperCol: {
+      offset: 4,
+      span: 16,
+    },
+  };
+
 class JoinRoom extends Component{
 
     constructor(){
@@ -38,9 +53,9 @@ class JoinRoom extends Component{
                     <span />
                 </div>
 
-                <div className="App-header">
-                    <Card title="Join room" bordered={false} style={{ width: 500 }}>
-                    <Form
+                <div className="App-temp">
+                    <Card title="Join room" bordered={true} style={{ width: 500, borderRadius:'15px'}}>
+                    <Form {...layout}
                         name="basic"
                         initialValues={{
                             remember: true,
@@ -73,7 +88,7 @@ class JoinRoom extends Component{
                             <Input />
                         </Form.Item>
 
-                        <Form.Item>
+                        <Form.Item {...tailLayout}>
                             <Button type="primary" htmlType="submit">
                             Submit
                             </Button>

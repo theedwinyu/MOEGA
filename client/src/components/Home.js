@@ -48,18 +48,21 @@ class Home extends Component{
                 </div>
 
             <div className="App-header">
-                <Card bordered={true} style={{ backgroundColor:'white', borderRadius:'15px'}}>
-                <Meta
+                {/* <Card bordered={true} style={{ backgroundColor:'white', borderRadius:'15px'}}> */}
+                {/* <Meta
                     title={<h1>Making Online Education Great Again</h1>}
-                    style={{color:'#1A2E33', textAlign:'center'}}
-                />
+                    style={{color:'#FFFFFF', textAlign:'center'}}
+                /> */}
 
-                <Divider/>
-                <Button onClick={this.joinRoomClick}>Join Room</Button>
-                <br></br>
-                <br></br>
-                <Button onClick={this.createRoomClick}>Create Room</Button>
-                </Card>
+                <h1>M.O.E.G.A</h1>
+                <h2>Making Online Education Great Again</h2>
+
+                {/* <Divider/> */}
+                <Button shape = "round" onClick={this.joinRoomClick}>Join Room</Button>
+                {/* <br></br> */}
+     
+                <Button shape = "round" onClick={this.createRoomClick}>Create Room</Button>
+                {/* </Card> */}
             </div>
                 
             </section>
