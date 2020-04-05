@@ -6,6 +6,7 @@ import {Card, Spin} from 'antd';
 import ChatroomLecturer from "./ChatroomLecturer"
 import WhiteBoard from "./WhiteBoard"
 import { LoadingOutlined } from '@ant-design/icons';
+import axios from 'axios';
 
 const { Meta } = Card;
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
@@ -37,6 +38,14 @@ class LecturerDashboard extends Component{
             id: id
         })
 
+        const room = {
+            room_id: id
+        }
+        axios.post('/classes/add', room)
+        .then(mongoRes => {
+            console.log(mongoRes)
+        })
+        
         var constraints = { audio: true };
         navigator.mediaDevices.getUserMedia(constraints).then( (mediaStream) => {
             var mediaRecorder = new MediaRecorder(mediaStream);
