@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Comment, Avatar, Form, Button, List, Input, Empty } from 'antd';
+import { Comment, Avatar, Form, Button, List, Input, Card } from 'antd';
 import moment from 'moment';
 
 const CommentList = ({ comments }) => (
@@ -10,7 +10,7 @@ const CommentList = ({ comments }) => (
             dataSource={comments}
             itemLayout="horizontal"
             renderItem={props => <Comment {...props} />}
-            style={{overflowY:'scroll', height: '50vh', marginBottom: '10%'}}
+            style={{overflowY:'scroll', height: '65vh', marginBottom: '10%'}}
         />
     </div>
     
