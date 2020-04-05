@@ -49,7 +49,7 @@ class ChatroomLecturer extends Component {
                         {
                         author: name,
                         content: <p>{message}</p>,
-                        datetime: moment().fromNow(),
+                        datetime: moment().format('LLLL'),
                         },
                         ...this.state.comments,
                     ]
@@ -80,7 +80,7 @@ class ChatroomLecturer extends Component {
                 {
                 author: this.props.name,
                 content: <p>{this.state.value}</p>,
-                datetime: moment().fromNow(),
+                datetime: moment().format('LLLL'),
                 },
                 ...this.state.comments,
             ],
