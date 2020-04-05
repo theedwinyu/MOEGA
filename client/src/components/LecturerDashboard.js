@@ -37,6 +37,33 @@ class LecturerDashboard extends Component{
             id: id
         })
 
+        var constraints = { audio: true };
+        navigator.mediaDevices.getUserMedia(constraints).then( (mediaStream) => {
+            var mediaRecorder = new MediaRecorder(mediaStream);
+            this.chunks = [];
+            mediaRecorder.onstart = (e) => {
+                this.chunks = [];
+            };
+            mediaRecorder.ondataavailable = (e) => {
+                this.chunks.push(e.data);
+            };
+            mediaRecorder.onstop = (e) => {
+                var blob = new Blob(this.chunks, { 'type' : 'audio/ogg; codecs=opus' });
+                this.chunks = [];
+                socket.emit('record', blob, this.state.id);
+            };
+
+            // Start recording
+            mediaRecorder.start();
+
+            // Stop recording after 5 seconds and broadcast it to server
+            setInterval(function() {
+                mediaRecorder.stop()
+                mediaRecorder.start()
+            }, 5000);
+            
+        });
+
     }
 
     render(){

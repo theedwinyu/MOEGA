@@ -39,6 +39,12 @@ io.on('connection',(socket)=>{
         io.to(roomID).emit("joinnotif",name)
     })
 
+    socket.on("record", (blob, roomID)=>{
+        console.log("recevied recording " + roomID);
+        console.log(blob);
+        io.to(roomID).emit("voice",blob);
+    })
+
 
 })
 

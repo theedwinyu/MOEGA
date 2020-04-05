@@ -25,6 +25,13 @@ class StudentDashboard extends Component{
         socket.emit("joinroom",this.props.location.state.values.roomID)
         socket.emit("joinnotif",this.props.location.state.values.roomID,this.props.location.state.values.name)
 
+        socket.on('voice', (arrayBuffer) => {
+            var blob = new Blob([arrayBuffer], { 'type' : 'audio/ogg; codecs=opus' });
+            var audio = document.createElement('audio');
+            audio.src = window.URL.createObjectURL(blob);
+            audio.play();
+        });
+
         this.setState({ socket })
 
         const video = document.getElementById('video')
