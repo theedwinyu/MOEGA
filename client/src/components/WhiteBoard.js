@@ -1,14 +1,25 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Button from "react-bootstrap/Button";
 // import "./style/WhiteBoard.css";
 import { Stage, Layer } from "react-konva";
 import { addLine } from "./Line";
 
-function WhiteBoardPage() {
+function WhiteBoardPage(props) {
 	const stage = React.createRef();
 	const layer = React.createRef();
+	var prev = null
 
+	useEffect(()=>{
+		setInterval(()=>{
+			let current = stage.current.getStage().toDataURL()
+			if(prev != current){
+				console.log("diff!")
+				props.socket.emit("whiteboardUpdate",props.roomID,stage.current.getStage().toDataURL())
+			}
+			prev = current
+		},1000)
+	})
 	const drawLine = () => {
 		addLine(stage.current.getStage(), layer.current);
     };

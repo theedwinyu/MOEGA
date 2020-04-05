@@ -45,6 +45,11 @@ io.on('connection',(socket)=>{
         io.to(roomID).emit("voice",blob);
     })
 
+    socket.on("whiteboardUpdate",(roomID,url)=>{
+        console.log("whiteboard!")
+        socket.to(roomID).emit("whiteboard",url)
+    })
+
 
 })
 

@@ -24,6 +24,18 @@ class StudentDashboard extends Component{
         const socket = io("http://localhost:5000/");
         socket.emit("joinroom",this.props.location.state.values.roomID)
         socket.emit("joinnotif",this.props.location.state.values.roomID,this.props.location.state.values.name)
+        socket.on("whiteboard",(dat)=>{
+            console.log("fuck")
+            var wbCanvas = document.getElementById('whiteboard')
+            var ctx = wbCanvas.getContext('2d')
+            ctx.clearRect(0, 0, wbCanvas.width, wbCanvas.height);
+            var img = new Image
+            img.onload = ()=>{
+                ctx.drawImage(img,0,0)
+            }
+            img.src = dat
+
+        })
 
         socket.on('voice', (arrayBuffer) => {
             var blob = new Blob([arrayBuffer], { 'type' : 'audio/ogg; codecs=opus' });
@@ -114,7 +126,7 @@ class StudentDashboard extends Component{
 
                 <Card title={<h1>{welcomeTitle}</h1>} extra={<div><video id="video" width="160" height="120" autoPlay></video></div>} bordered={true} style={{ backgroundColor:'white', borderRadius:'15px', marginLeft: '5%', marginRight:'5%'}}>
                     <Card.Grid style={{ width: '50%', textAlign: 'center', borderRadius:'15px' }}>
-                        <WhiteBoard />
+                        <canvas id="whiteboard" width={380} height={600}></canvas>
                     </Card.Grid>
                     <Card.Grid style={{ width: '50%', textAlign: 'center', borderRadius:'15px' }}>
                         {(this.state.socket !== null) ? <Chatroom name={name} socket={this.state.socket} roomID={roomID} /> : <Spin indicator={antIcon} />}
