@@ -16,6 +16,14 @@ var server = http.createServer(app)
 
 var io = require('socket.io')(server)
 
+const uri = process.env.ATLAS_URI;
+mongoose.connect( process.env.MONGODB_URI || uri, { dbName:"CatDB", useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true }
+);
+const connection = mongoose.connection;
+connection.once('open', () => {
+  console.log("MongoDB database connection established successfully");
+})
+
 io.on('connection',(socket)=>{
     console.log("someone connected")
 
@@ -41,6 +49,9 @@ io.on('connection',(socket)=>{
 
 
 })
+const classesRouter = require('./routes/classes');
+
+app.use('/classes', classesRouter);
 
 server.listen(port, () => {
     console.log('Server is running on port: ' + port);
