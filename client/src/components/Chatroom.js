@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 
-import { Comment, Avatar, Form, Button, List, Input, Empty } from 'antd';
+import { Comment, Avatar, Form, Button, List, Input, Empty ,Typography } from 'antd';
 import moment from 'moment';
+
+const {Text} = Typography
 
 const CommentList = ({ comments }) => (
     <div>
@@ -114,6 +116,10 @@ class Chatroom extends Component {
         return (
             <div>
                 {<CommentList comments={comments} />}
+                <div>
+                    <Text type = {this.state.disableChat ? "warning":'success'}>{this.state.disableChat ? "Please raise your hand to comment":"Commenting enabled!"}</Text>
+                    
+                </div>
                 <Comment
                 author={this.props.name}
                 content={
