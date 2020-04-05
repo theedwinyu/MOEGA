@@ -16,10 +16,10 @@ const CommentList = ({ comments }) => (
     
 );
 
-const Editor = ({ onChange, onSubmit, submitting, value }) => (
+const Editor = ({ onChange, onSubmit, submitting, value, disableChat }) => (
     <div>
         <Form.Item>
-        <Input onChange={onChange} value={value} />
+        <Input onChange={onChange} value={value} disabled={disableChat}/>
         </Form.Item>
         <Form.Item>
         <Button htmlType="submit" loading={submitting} onClick={onSubmit} type="primary">
@@ -36,10 +36,49 @@ class Chatroom extends Component {
             comments: [],
             submitting: false,
             value: '',
+            disableChat: true
         }
     }
 
+    componentDidMount(){
+        const myName = this.props.name;
+        const socket = this.props.socket;
+        socket.on("newMessage", (name, message) => {
+            if(name !== myName){
+                this.setState({
+                    comments: [
+                        {
+                        author: name,
+                        content: <p>{message}</p>,
+                        datetime: moment().fromNow(),
+                        },
+                        ...this.state.comments,
+                    ]
+                })
+            }
+        }) 
+
+        socket.on("hand", (name) => {
+            if(name === myName){
+                clearTimeout();
+                this.setState({
+                    disableChat: false
+                })
+
+                setTimeout(() => {
+                    this.setState({
+                        disableChat: true
+                    });
+                }, 30000);
+            }
+        }) 
+    }
+
     handleSubmit = () => {
+        const { name, socket, roomID } = this.props;
+
+        socket.emit("sentComment",roomID,name,this.state.value)
+
         if (!this.state.value) {
             return;
         }
@@ -83,6 +122,7 @@ class Chatroom extends Component {
                     onSubmit={this.handleSubmit}
                     submitting={submitting}
                     value={value}
+                    disableChat={this.state.disableChat}
                     />
                 }
                 />

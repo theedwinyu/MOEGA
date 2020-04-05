@@ -14,12 +14,10 @@ class Home extends Component{
     }
 
     joinRoomClick = () => {
-        console.log("Redirecting to join room page");
         this.setState({joinRedirect:true, createRedirect: false});
     }
 
     createRoomClick = () => {
-        console.log("Redirecting to create room page");
         this.setState({createRedirect: true, joinRedirect: false});
     }
 
