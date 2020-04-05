@@ -40,7 +40,7 @@ function WhiteBoardPage(props) {
 				</Button>
 			</ButtonGroup>
 			<Stage
-				width={380}
+				width={500}
 				height={600}
 				ref={stage}
 			>

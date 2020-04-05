@@ -93,10 +93,10 @@ class LecturerDashboard extends Component{
                 </div>
 
                 <Card title={<h1>{welcomeTitle}</h1>} bordered={true} style={{ backgroundColor:'white', borderRadius:'15px', marginLeft: '5%', marginRight:'5%'}}>
-                    <Card.Grid style={{ width: '50%', textAlign: 'center', borderRadius:'15px' }}>
+                    <Card.Grid style={{ width: '50%', textAlign: 'center', borderRadius:'15px', height: '700px' }}>
                         <WhiteBoard socket = {socket} roomID = {id}/>
                     </Card.Grid>
-                    <Card.Grid style={{ width: '50%', textAlign: 'center', borderRadius:'15px' }}>
+                    <Card.Grid style={{ width: '50%', textAlign: 'center', borderRadius:'15px', height: '700px' }}>
                         <ChatroomLecturer name={"Lecturer"} socket={this.state.socket} roomID={id} />
                     </Card.Grid>
                 </Card>

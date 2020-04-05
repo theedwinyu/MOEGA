@@ -140,10 +140,10 @@ class StudentDashboard extends Component{
                 </div>
 
                 <Card title={<h1>{welcomeTitle}</h1>} extra={<div><video id="video" width="160" height="120" autoPlay></video></div>} bordered={true} style={{ backgroundColor:'white', borderRadius:'15px', marginLeft: '5%', marginRight:'5%'}}>
-                    <Card.Grid style={{ width: '50%', textAlign: 'center', borderRadius:'15px' }}>
+                    <Card.Grid style={{ width: '50%', textAlign: 'center', borderRadius:'15px', height:'700px' }}>
                         <canvas id="whiteboard" width={380} height={600}></canvas>
                     </Card.Grid>
-                    <Card.Grid style={{ width: '50%', textAlign: 'center', borderRadius:'15px' }}>
+                    <Card.Grid style={{ width: '50%', textAlign: 'center', borderRadius:'15px', height:'700px' }}>
                         {(this.state.socket !== null) ? <Chatroom name={name} socket={this.state.socket} roomID={roomID} /> : <Spin indicator={antIcon} />}
                     </Card.Grid>
                 </Card>
