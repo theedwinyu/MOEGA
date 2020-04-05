@@ -6,7 +6,6 @@ import { Stage, Layer } from "react-konva";
 import { addLine } from "./Line";
 
 function WhiteBoardPage() {
-	const [, updateState] = React.useState();
 	const stage = React.createRef();
 	const layer = React.createRef();
 
@@ -22,16 +21,16 @@ function WhiteBoardPage() {
 		<div className="home-page">
 			<h1>WhiteBoard</h1>
 			<ButtonGroup>
-				<Button variant="secondary" onClick={drawLine}>
+				<Button variant="outline-primary" onClick={drawLine}>
 					Line
-				</Button>
-				<Button variant="secondary" onClick={eraseLine}>
+				</Button>{' '}
+				<Button variant="outline-primary" onClick={eraseLine}>
 					Erase
 				</Button>
 			</ButtonGroup>
 			<Stage
-				width={window.innerWidth * 0.9}
-				height={window.innerHeight - 150}
+				width={380}
+				height={600}
 				ref={stage}
 			>
 				<Layer ref={layer}>
