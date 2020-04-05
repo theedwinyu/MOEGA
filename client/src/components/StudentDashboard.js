@@ -93,7 +93,7 @@ class StudentDashboard extends Component{
             let rightwristy = pose.rightWrist.y
             let rightwristc = pose.rightWrist.confidence
         
-            if(nosec < 0.50 || (rightwristc < 0.50 && leftwristc < 0.50)){
+            if(nosec < 0.25 || (rightwristc < 0.25 && leftwristc < 0.25)){
                 // console.log("bad c")
                 return
             }
