@@ -1,2 +1,3 @@
-# CatHacks
-uwu~
+# MOEGA
+
+Making Online Education Great Again
