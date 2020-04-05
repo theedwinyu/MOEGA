@@ -12,6 +12,7 @@ const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
 class StudentDashboard extends Component{
 
+
     constructor(props){
         super(props)
         this.state = {
@@ -20,7 +21,7 @@ class StudentDashboard extends Component{
     }
 
     componentDidMount(){
-
+        var soundStack = []
         const socket = io("/");
         socket.emit("joinroom",this.props.location.state.values.roomID)
         socket.emit("joinnotif",this.props.location.state.values.roomID,this.props.location.state.values.name)
@@ -38,10 +39,22 @@ class StudentDashboard extends Component{
         })
 
         socket.on('voice', (arrayBuffer) => {
+            console.log("asd")
+            
             var blob = new Blob([arrayBuffer], { 'type' : 'audio/ogg; codecs=opus' });
             var audio = document.createElement('audio');
             audio.src = window.URL.createObjectURL(blob);
-            audio.play();
+            console.log(soundStack.length)
+            audio.onended = () => {
+                if(soundStack.length != 0){
+                    let nautio = soundStack.shift()
+                    nautio.play()
+                }
+            }
+            if(soundStack.length == 0){
+                audio.play()
+            }
+            soundStack.push(audio)
         });
 
         this.setState({ socket })
@@ -96,6 +109,8 @@ class StudentDashboard extends Component{
 
     }
 
+    
+
     render(){
 
         if(this.props.location.state == undefined){
@@ -134,6 +149,7 @@ class StudentDashboard extends Component{
                 </Card>
 
               </section>
+              <audio id = "comms"></audio>
 
             </div>
 
