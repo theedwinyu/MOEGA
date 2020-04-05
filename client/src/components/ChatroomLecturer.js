@@ -10,7 +10,7 @@ const CommentList = ({ comments }) => (
             dataSource={comments}
             itemLayout="horizontal"
             renderItem={props => <Comment {...props} />}
-            style={{overflowY:'scroll', height: '65vh', marginBottom: '10%'}}
+            style={{overflowY:'scroll', height: '50vh', marginBottom: '10%'}}
         />
     </div>
     
