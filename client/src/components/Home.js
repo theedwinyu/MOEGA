@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {Redirect} from "react-router-dom"
 import { Card, Button, Divider } from 'antd';
+import { CommentOutlined, EditOutlined } from '@ant-design/icons';
+
 
 const { Meta } = Card;
 
@@ -56,10 +58,10 @@ class Home extends Component{
                 <h2>Making Online Education Great Again</h2>
 
                 {/* <Divider/> */}
-                <Button shape = "round" onClick={this.joinRoomClick}>Join Room</Button>
+                <Button shape = "round" icon={<CommentOutlined />} onClick={this.joinRoomClick}>Join Room</Button>
                 {/* <br></br> */}
      
-                <Button shape = "round" onClick={this.createRoomClick}>Create Room</Button>
+                <Button shape = "round" icon={<EditOutlined />} onClick={this.createRoomClick}>Create Room</Button>
                 {/* </Card> */}
             </div>
                 
