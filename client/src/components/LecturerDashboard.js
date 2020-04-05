@@ -23,7 +23,7 @@ class LecturerDashboard extends Component{
 
     componentDidMount(){
         const id = uniqid()
-        const socket = io("http://localhost:5000/");
+        const socket = io("/");
         socket.emit("joinroom",id)
         socket.on("hand",(arg)=>{
             // console.log(arg+' raised hand')

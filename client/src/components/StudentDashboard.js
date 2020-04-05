@@ -21,7 +21,7 @@ class StudentDashboard extends Component{
 
     componentDidMount(){
 
-        const socket = io("http://localhost:5000/");
+        const socket = io("/");
         socket.emit("joinroom",this.props.location.state.values.roomID)
         socket.emit("joinnotif",this.props.location.state.values.roomID,this.props.location.state.values.name)
         socket.on("whiteboard",(dat)=>{
