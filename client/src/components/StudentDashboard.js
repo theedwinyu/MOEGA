@@ -37,6 +37,13 @@ class StudentDashboard extends Component{
 
         })
 
+        socket.on('voice', (arrayBuffer) => {
+            var blob = new Blob([arrayBuffer], { 'type' : 'audio/ogg; codecs=opus' });
+            var audio = document.createElement('audio');
+            audio.src = window.URL.createObjectURL(blob);
+            audio.play();
+        });
+
         this.setState({ socket })
 
         const video = document.getElementById('video')
