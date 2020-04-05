@@ -39,6 +39,11 @@ io.on('connection',(socket)=>{
         io.to(roomID).emit("joinnotif",name)
     })
 
+    socket.on("whiteboardUpdate",(roomID,url)=>{
+        console.log("whiteboard!")
+        socket.to(roomID).emit("whiteboard",url)
+    })
+
 
 })
 
