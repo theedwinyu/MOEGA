@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import { Comment, Avatar, Form, Button, List, Input, Empty ,Typography } from 'antd';
 import moment from 'moment';
+import axios from 'axios';
 
 const {Text} = Typography
 
@@ -88,6 +89,16 @@ class Chatroom extends Component {
         this.setState({
             submitting: true,
         });
+
+        const question = {
+            question: this.state.value
+        }
+
+        axios.post('/classes/updateQuestion/' + this.props.roomID, question)
+        .then(res=> {
+            console.log(question)
+            console.log('success')
+        })
 
         setTimeout(() => {
             this.setState({
