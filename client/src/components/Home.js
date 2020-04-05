@@ -54,7 +54,7 @@ class Home extends Component{
                     style={{color:'#FFFFFF', textAlign:'center'}}
                 /> */}
 
-                <h1>M.O.E.G.A</h1>
+                <h1>M.O.E.G.A.</h1>
                 <h2>Making Online Education Great Again</h2>
 
                 {/* <Divider/> */}
