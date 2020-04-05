@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import axios from 'axios';
 import { Comment, Avatar, Form, Button, List, Input, Empty } from 'antd';
 import moment from 'moment';
 
@@ -67,6 +67,13 @@ class ChatroomLecturer extends Component {
         if (!this.state.value) {
             return;
         }
+
+        console.log("hello")
+        axios.post('http://localhost:5000/classes/updateQuestion/' + 'testing', Editor.value)
+        .then(res=> {
+            console.log(res)
+        })
+
 
         this.setState({
             submitting: true,

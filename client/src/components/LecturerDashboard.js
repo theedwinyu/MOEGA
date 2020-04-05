@@ -6,6 +6,7 @@ import {Card, Spin} from 'antd';
 import ChatroomLecturer from "./ChatroomLecturer"
 import WhiteBoard from "./WhiteBoard"
 import { LoadingOutlined } from '@ant-design/icons';
+import axios from 'axios';
 
 const { Meta } = Card;
 const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
@@ -32,6 +33,16 @@ class LecturerDashboard extends Component{
             // console.log(arg+" joined")
         })
         
+        const room = {
+            room_id: id
+        }
+   
+        axios.post('/classes/add', room)
+            .then(mongoRes => {
+                console.log(mongoRes)
+            })
+
+
         this.setState({
             socket: socket,
             id: id

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Redirect,withRouter} from "react-router-dom";
 import { Card, Button, Form, Input } from 'antd';
+import axios from 'axios';
 
 const layout = {
     labelCol: {
@@ -29,6 +30,16 @@ class JoinRoom extends Component{
 
     onFinish = values => {
         this.setState({redirect: true, values})
+
+        const room_id = values.roomID
+        const student = {
+            student: values.name
+        }
+
+        axios.post('/classes/updateStudent/' + room_id, student)
+            .then(res=> {
+                console.log(res)
+            })
     };
 
     render(){
