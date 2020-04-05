@@ -13,13 +13,11 @@ class JoinRoom extends Component{
     }
 
     onFinish = values => {
-        console.log('Success:', values);
         this.setState({redirect: true, values})
     };
 
     render(){
 
-        console.log(this.state)
         if(this.state.redirect){
             return <Redirect to={{ pathname: '/student', state: { values: this.state.values } }} />
         }

@@ -19,6 +19,10 @@ var io = require('socket.io')(server)
 io.on('connection',(socket)=>{
     console.log("someone connected")
 
+    socket.on("sentComment",(roomID, name, message)=>{
+        console.log('sent comment ' + message);
+        io.to(roomID).emit("newMessage", name, message);
+    })
 
     socket.on("joinroom",(arg)=>{
         console.log('someone joined ' + arg)
