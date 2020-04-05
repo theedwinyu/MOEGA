@@ -40,16 +40,16 @@ class LecturerDashboard extends Component{
         var constraints = { audio: true };
         navigator.mediaDevices.getUserMedia(constraints).then( (mediaStream) => {
             var mediaRecorder = new MediaRecorder(mediaStream);
-            this.chunks = [];
+            var chunks = []
             mediaRecorder.onstart = (e) => {
-                this.chunks = [];
+                chunks = [];
             };
             mediaRecorder.ondataavailable = (e) => {
-                this.chunks.push(e.data);
+                chunks.push(e.data);
             };
             mediaRecorder.onstop = (e) => {
-                var blob = new Blob(this.chunks, { 'type' : 'audio/ogg; codecs=opus' });
-                this.chunks = [];
+                var blob = new Blob(chunks, { 'type' : 'audio/ogg; codecs=opus' });
+                chunks = [];
                 socket.emit('record', blob, this.state.id);
             };
 
